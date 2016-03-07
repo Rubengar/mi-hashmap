@@ -74,9 +74,24 @@ public class MiHashMap
     {
         return key.length;
     }
+    /**
+     *  vacía el mapa.
+     */
     public void clear()
     {
         key = new String[0];
         value = new int[0];
+    }
+    public boolean containsKey(String clave)
+    {
+        boolean contiene = false;
+        for (int i = 0; i< key.length && contiene == false;i++)
+        {
+            if (clave == key[i])
+            {
+                contiene = true;
+            }
+        }
+        return contiene;
     }
 }
