@@ -52,7 +52,7 @@ public class MiHashMap
             {
                 if (clave.contains(key[i]))
                 {
-                    resultado = valor;
+                    resultado = value[i];
                     value[i]=valor;
                 }
                 else
@@ -155,4 +155,44 @@ public class MiHashMap
         }
         return contiene;
     }
+    /**
+     * elimina del mapa el elemento con la clave dada y devuelve su valor. Si no hay esa clave en el mapa devuelve -1.
+     */
+    public int remove(String clave)
+    {
+        int valor = -1;
+        for (int i = 0; i< key.length;  i++)
+        {
+            if (clave == key[i])
+            {
+                valor = value[i];
+                String[] nuevo = key;
+                key = new String[key.length-1];
+                for (int a = 0; a < key.length; a++)
+                {
+                    key[a] = nuevo[a];
+                }
+                for (int b = i ; i< key.length; b++)
+                {
+                    key[b] = nuevo[b+1];
+                }
+                int[] nuevo1 = value;
+                value = new int[value.length-1];
+                for (int a = 0; a < value.length; a++)
+                {
+                    
+                    value[a] = nuevo1[a];
+                }
+                for (int b = i ; i< key.length; b++)
+                {
+                    value[b] = nuevo1[b+1];
+                    
+                }
+                
+            }
+        }
+        return valor;
+    }
+    
 }
+
