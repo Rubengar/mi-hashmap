@@ -82,12 +82,30 @@ public class MiHashMap
         key = new String[0];
         value = new int[0];
     }
+    /**
+     * Devuelve true si el mapa contiene la clave dada.
+     */
     public boolean containsKey(String clave)
     {
         boolean contiene = false;
         for (int i = 0; i< key.length && contiene == false;i++)
         {
             if (clave == key[i])
+            {
+                contiene = true;
+            }
+        }
+        return contiene;
+    }
+    /**
+     * Devuelve true si el mapa contiene el valor dado.
+     */
+    public boolean containsValue(int valor)
+    {
+        boolean contiene = false;
+        for (int i = 0; i< value.length && contiene == false;i++)
+        {
+            if (valor == value[i])
             {
                 contiene = true;
             }
