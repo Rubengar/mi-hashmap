@@ -32,20 +32,7 @@ public class MiHashMap
         {
             if (clave == key[i] )
             {
-                int[] local = key;
-                lista = new int[local.length + 1];
-                for (int cont = 0; cont < local.length;cont++)
-                {
-                    if (cont < index)
-                    {
-                        lista[cont] = local[cont];
-                    }
-                    else
-                    {
-                        lista[cont+1] = local[cont];
-                    }
-                }
-                lista[index] = elemento;
+              
             }else
             {
                 String[] array3 = key;
@@ -65,9 +52,12 @@ public class MiHashMap
                 resultado = -1;
             }
         }
-        int resultado = -1;
+ 
         return resultado;
     }
+    /**
+     * devuelve true si el mapa no contiene elementos.
+     */
     public boolean isEmpty()
     {
         boolean vacio = true;
@@ -77,8 +67,16 @@ public class MiHashMap
         }
         return vacio;
     }
+    /**
+     * devuelve el número de elementos del mapa.
+     */
     public int size()
     {
         return key.length;
+    }
+    public void clear()
+    {
+        key = new String[0];
+        value = new int[0];
     }
 }
