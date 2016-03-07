@@ -28,33 +28,72 @@ public class MiHashMap
     public int put(String clave,int valor)
     {
         int resultado = 0;
-        for (int i = 0; i < key.length; i++)
+        if (isEmpty())
         {
-            if (clave == key[i] )
+            String[] array3 = key;
+            key = new String[array3.length + 1];
+            for (int count = 0; count < array3.length; count++)
             {
-              
-            }else
+                key[count] = array3[count];
+            }
+            key[array3.length] = clave;
+            int[] array2 = value;
+            value = new int[array2.length + 1];
+            for (int count = 0; count < array2.length; count++)
             {
-                String[] array3 = key;
-                key = new String[array3.length + 1];
-                for (int count = 0; count < array3.length; count++)
+                value[count] = array2[count];
+            }
+            value[array2.length] = valor;
+            resultado = -1;
+
+        }
+        else{
+            for (int i = 0; i < key.length; i++)
+            {
+                if (clave.contains(key[i]))
                 {
-                    key[count] = array3[count];
+                    resultado = valor;
+                    value[i]=valor;
                 }
-                key[array3.length] = clave;
-                int[] array2 = value;
-                value = new int[array2.length + 1];
-                for (int count = 0; count < array2.length; count++)
+                else
                 {
-                    value[count] = array2[count];
+                    String[] array3 = key;
+                    key = new String[array3.length + 1];
+                    for (int count = 0; count < array3.length; count++)
+                    {
+                        key[count] = array3[count];
+                    }
+                    key[array3.length] = clave;
+                    int[] array2 = value;
+                    value = new int[array2.length + 1];
+                    for (int count = 0; count < array2.length; count++)
+                    {
+                        value[count] = array2[count];
+                    }
+                    value[array2.length] = valor;
+                    resultado = -1;
                 }
-                value[array2.length] = valor;
-                resultado = -1;
             }
         }
- 
         return resultado;
     }
+
+    /**
+     * Devuelve el valor asociado con la clave especificada o -1 en caso de que la clave no exista.
+     */
+    public int get(String clave)
+    {
+        int resultado = -1;
+        for (int i = 0; i< key.length && resultado == -1;i++)
+        {
+            if (clave == key[i])
+            {
+                resultado = value[i];
+            }
+        }
+        return resultado;
+    }
+
     /**
      * devuelve true si el mapa no contiene elementos.
      */
@@ -67,6 +106,7 @@ public class MiHashMap
         }
         return vacio;
     }
+
     /**
      * devuelve el número de elementos del mapa.
      */
@@ -74,6 +114,7 @@ public class MiHashMap
     {
         return key.length;
     }
+
     /**
      *  vacía el mapa.
      */
@@ -82,6 +123,7 @@ public class MiHashMap
         key = new String[0];
         value = new int[0];
     }
+
     /**
      * Devuelve true si el mapa contiene la clave dada.
      */
@@ -97,6 +139,7 @@ public class MiHashMap
         }
         return contiene;
     }
+
     /**
      * Devuelve true si el mapa contiene el valor dado.
      */
